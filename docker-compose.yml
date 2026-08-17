@@ -1,0 +1,27 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql+psycopg://vulnprior:vulnprior@db:5432/vulnprior
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: vulnprior
+      POSTGRES_USER: vulnprior
+      POSTGRES_PASSWORD: vulnprior
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vulnprior -d vulnprior"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - vulnprior_pgdata:/var/lib/postgresql/data
+
+volumes:
+  vulnprior_pgdata:

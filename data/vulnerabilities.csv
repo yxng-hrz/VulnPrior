@@ -1,0 +1,4 @@
+cve_id,title,description,cvss,epss,kev,patch_available,published_at
+CVE-2026-20001,Demo deserialization issue,Synthetic sample only,9.1,0.77,true,true,2026-07-10
+CVE-2026-20002,Demo path traversal,Synthetic sample only,7.5,0.25,false,true,2026-06-01
+CVE-2026-20003,Demo denial of service,Synthetic sample only,5.9,0.04,false,false,2026-05-18
