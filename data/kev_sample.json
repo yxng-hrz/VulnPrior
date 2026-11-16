@@ -1,0 +1,9 @@
+{
+  "title": "Offline KEV sample (synthetic CVE ids, CISA catalogue format)",
+  "catalogVersion": "demo.2026.11",
+  "count": 2,
+  "vulnerabilities": [
+    {"cveID": "CVE-2026-10002", "vendorProject": "Demo", "product": "API Gateway", "vulnerabilityName": "Demo authentication bypass", "dateAdded": "2026-11-10", "dueDate": "2026-12-01", "knownRansomwareCampaignUse": "Unknown"},
+    {"cveID": "CVE-2026-10006", "vendorProject": "Demo", "product": "HR Suite", "vulnerabilityName": "Demo deserialization", "dateAdded": "2026-11-12", "dueDate": "2026-12-03", "knownRansomwareCampaignUse": "Known"}
+  ]
+}

@@ -1,0 +1,6 @@
+asset,cve_id,title,cvss,epss,kev,patch_available
+vpn-gateway,CVE-2024-21762,Fortinet FortiOS out-of-bounds write in SSL VPN,9.8,0,false,true
+vpn-gateway,CVE-2024-3400,Palo Alto PAN-OS GlobalProtect command injection,10.0,0,false,true
+customer-portal-prod,CVE-2021-44228,Apache Log4j2 remote code execution (Log4Shell),10.0,0,false,true
+finance-api-prod,CVE-2023-34362,Progress MOVEit Transfer SQL injection,9.8,0,false,true
+hr-app,CVE-2019-0708,Microsoft Remote Desktop Services RCE (BlueKeep),9.8,0,false,true

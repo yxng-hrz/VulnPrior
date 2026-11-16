@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>VulnPrior — CISO Vulnerability Risk Cockpit</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">CISO DECISION SUPPORT · VULNERABILITY RISK</p>
+        <h1>VulnPrior</h1>
+        <p class="lead">Which vulnerabilities to fix first, on which business services, by when — and what it buys the business.</p>
+      </div>
+      <div class="links">
+        <input id="api-key" type="password" placeholder="API key (optional)" aria-label="API key">
+        <a href="/docs">OpenAPI</a>
+        <a href="/api/v1/reports/executive" target="_blank" rel="noopener">COMEX report</a>
+        <a href="/api/v1/reports/remediation-plan?format=csv">Remediation plan (CSV)</a>
+        <button id="refresh">Refresh</button>
+      </div>
+    </header>
+
+    <section id="summary" class="cards"></section>
+
+    <section class="grid-2">
+      <article class="panel">
+        <p class="eyebrow">QUICK WIN</p>
+        <h2 id="pareto-title">Pareto of remediation</h2>
+        <svg id="pareto" viewBox="0 0 520 170" role="img" aria-label="Cumulative exposure removed"></svg>
+        <p class="muted" id="pareto-text"></p>
+      </article>
+      <article class="panel">
+        <p class="eyebrow">TREND</p>
+        <h2>Total exposure over time</h2>
+        <svg id="trend" viewBox="0 0 520 170" role="img" aria-label="Exposure trend"></svg>
+        <div id="trend-labels" class="trend-labels"></div>
+      </article>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title">
+        <div><p class="eyebrow">PRIORITIZED QUEUE</p><h2>What to fix first</h2></div>
+        <span class="pill" id="chain-status">--</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Risk</th><th>Asset / service</th><th>CVE</th><th>Intel</th><th>Status</th><th>Decision</th><th>Deadline</th><th>Ticket</th></tr>
+          </thead>
+          <tbody id="findings"></tbody>
+        </table>
+      </div>
+      <p class="explanation" id="explanation"></p>
+    </section>
+
+    <section class="grid-2">
+      <article class="panel">
+        <p class="eyebrow">BUSINESS VIEW</p>
+        <h2>Business services at risk</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Service</th><th>Exposure</th><th>Critical</th><th>Overdue</th><th>KEV</th><th>Owners</th></tr></thead>
+            <tbody id="services"></tbody>
+          </table>
+        </div>
+      </article>
+      <article class="panel">
+        <p class="eyebrow">ACCOUNTABILITY</p>
+        <h2>Remediation plan by owner</h2>
+        <div id="plan" class="stack"></div>
+      </article>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">WHAT-IF SIMULATOR</p>
+      <h2>Score a vulnerability in its business context</h2>
+      <div class="simulator">
+        <form id="sim">
+          <label>CVSS <input name="cvss" type="number" min="0" max="10" step="0.1" value="8.1"></label>
+          <label>EPSS <input name="epss" type="number" min="0" max="1" step="0.01" value="0.30"></label>
+          <label>Asset criticality <input name="asset_criticality" type="number" min="1" max="5" value="4"></label>
+          <label>Environment
+            <select name="environment"><option>production</option><option>staging</option><option>development</option></select>
+          </label>
+          <label class="check"><input name="kev" type="checkbox"> Known exploited (KEV)</label>
+          <label class="check"><input name="ransomware_use" type="checkbox"> Used by ransomware</label>
+          <label class="check"><input name="internet_exposed" type="checkbox" checked> Internet exposed</label>
+          <label class="check"><input name="contains_sensitive_data" type="checkbox"> Sensitive data</label>
+          <label class="check"><input name="patch_available" type="checkbox" checked> Patch available</label>
+          <label class="check"><input name="compensating_control" type="checkbox"> Compensating control</label>
+        </form>
+        <div id="sim-result" class="sim-result"></div>
+      </div>
+    </section>
+
+    <footer class="muted">Educational portfolio project · synthetic demo data · explainable scoring model, not an industry standard.</footer>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
