@@ -1,4 +1,0 @@
-name,owner,environment,criticality,internet_exposed,contains_sensitive_data,business_service
-vpn-gateway,IT,production,5,true,false,Remote Access
-hr-app,HR IT,production,4,false,true,Human Resources
-staging-api,Platform,staging,2,true,false,Engineering
